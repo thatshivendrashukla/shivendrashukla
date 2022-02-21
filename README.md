@@ -1,3 +1,5 @@
-If you're looking at this, you're most likely looking at the source files.
+[**Archived**]
+
+If you're looking at this readme, you've likely taken a wrong turm somewhere.
 
 Click [**here**](https://shivendrashukla.com) to visit the website.
