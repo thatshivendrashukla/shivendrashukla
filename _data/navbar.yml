@@ -4,9 +4,9 @@
 - name: About
   link: /about/
   active: about
-- name: Blog
-  link: /blog/
-  active: blog
-- name: Photos
-  link: /photography/
-  active: photos
+# - name: Blog
+#   link: /blog/
+#   active: blog
+# - name: Photos
+#   link: /photography/
+#   active: photos
