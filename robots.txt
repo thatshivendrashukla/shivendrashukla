@@ -3,7 +3,7 @@ Allow: /
 
 Sitemap: https://shivendrashukla.com/sitemap.xml
 
-# AI crawlers — welcome on text pages; photographs are off limits
+# AI crawlers: photographs are off limits
 User-agent: GPTBot
 User-agent: ChatGPT-User
 User-agent: OAI-SearchBot
