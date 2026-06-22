@@ -24,13 +24,26 @@
   let filmstripBuilt = false
   const preloaded = new Set()
 
+  function safeHttpUrl(raw) {
+    if (typeof raw !== 'string' || raw.length === 0) return ''
+    try {
+      const url = new URL(raw, document.baseURI)
+      if (url.protocol === 'http:' || url.protocol === 'https:') return url.href
+    } catch {
+      // Ignore malformed URLs.
+    }
+    return ''
+  }
+
   function preloadFull(index) {
     const normalized = (index + images.length) % images.length
     const src = images[normalized]?.fullSrc
     if (!src || preloaded.has(src)) return
     preloaded.add(src)
+    const safeSrc = safeHttpUrl(src)
+    if (!safeSrc) return
     const img = new Image()
-    img.src = src
+    img.src = safeSrc
   }
 
   function preloadAdjacent() {
@@ -50,7 +63,9 @@
     protect.className = 'protected-image lightbox__filmstrip-protect'
 
     const img = document.createElement('img')
-    img.src = image.thumbSrc
+    const thumbSrc = safeHttpUrl(image.thumbSrc)
+    if (!thumbSrc) return button
+    img.src = thumbSrc
     img.alt = ''
     img.loading = 'lazy'
     img.decoding = 'async'
@@ -95,7 +110,8 @@
 
     if (mainImage) {
       mainImage.decoding = 'async'
-      mainImage.src = image.fullSrc
+      const fullSrc = safeHttpUrl(image.fullSrc)
+      if (fullSrc) mainImage.src = fullSrc
       mainImage.alt = image.alt
     }
     if (titleEl) titleEl.textContent = image.title

@@ -36,9 +36,4 @@
     event.preventDefault()
     window.location.href = `mailto:${decodeEmail(encoded)}`
   })
-
-  document.querySelectorAll('[data-email-encoded]').forEach((link) => {
-    const encoded = link.getAttribute('data-email-encoded')
-    if (encoded) link.setAttribute('href', `/cdn-cgi/l/email-protection#${encoded}`)
-  })
 })()
