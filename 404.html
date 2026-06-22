@@ -1,20 +1,25 @@
 ---
-title: That's a 404
 layout: default
 permalink: /404.html
+title: Page not found | Shivendra Shukla
+description: The page you requested could not be found on shivendrashukla.com.
+noindex: true
 ---
 
-<div class="error404">
-  <p><h1>HTTP 404</h1></p>
-  <br />
-  <hr />
-  <p class="lead">This page does not (yet?) exist.</p>
-  <br />
-  <p></p>
-  <p>The link you followed may be broken, or the page may have been removed.</p>
-  <p>
-    Try going
-    <b><a href="/" title="Shivendra Shukla homepage">back to the homepage</a></b
-    >, or using the links above to find what you're looking for.
-  </p>
+<div class="site-frame page-content not-found">
+  <p class="not-found-label">HTTP 404 · page not found</p>
+  <h1 class="page-title" style="margin-top: 0.5rem">
+    This page does not (yet?) exist.
+  </h1>
+
+  <div class="not-found-body">
+    <p class="not-found-muted">
+      The link you followed may be broken, or the page may have moved.
+    </p>
+    <p class="not-found-text">
+      Try going back to the
+      <a href="{{ '/' | relative_url }}" class="footer-link">homepage</a>,
+      or use the links above to find what you're looking for.
+    </p>
+  </div>
 </div>

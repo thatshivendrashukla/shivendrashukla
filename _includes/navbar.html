@@ -1,49 +1,16 @@
-<!-- <nav class="navbar navbar-expand navbar-light bg-none"> -->
-<!--  <a class="navbar-brand" href="/">Shivendra Shukla</a> -->
-
-<!--  <div class="navbar-expand">
-    <ul class="navbar-nav">
-      {% for item in site.data.navbar %}
-      <li class="nav-item">
-        {% if {{page.active}} == {{item.active}} %}
-        <a class="nav-link active" href="{{ item.link }}"
-          >{{ item.name }}<span class="sr-only">(current)</span></a
+<header class="site-header">
+  <nav class="site-nav site-frame" aria-label="Main navigation">
+    <ul>
+      {% for item in site.data.nav %}
+      <li>
+        <a
+          href="{{ item.path | relative_url }}"
+          class="nav-link{% if page.nav == item.id %} nav-link--active{% endif %}"
         >
-        {% else %}
-        <a class="nav-link" href="{{ item.link }}">{{ item.name }}</a>
-        {% endif %}
+          {{ item.label }}
+        </a>
       </li>
       {% endfor %}
     </ul>
-  </div>
-</nav>
--->
-
-<!--
-<nav>
-  <ul>
-    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-    <li class="nav-item"><a class="nav-link" href="/about/">About</a></li>
-    <li class="nav-item"><a class="nav-link" href="/blog/">Blog</a></li>
-    <li class="nav-item">
-      <a class="nav-link" href="/photography/">Photos</a>
-    </li>
-  </ul>
-</nav>
--->
-
-<nav class="navbar navbar-expand navbar-light bg-none">
-  <ul>
-    {% for item in site.data.navbar %}
-    <li class="nav-item">
-      {% if {{page.active}} == {{item.active}} %}
-      <a class="nav-link active" href="{{ item.link }}"
-        >{{ item.name }}<span class="sr-only">(current)</span></a
-      >
-      {% else %}
-      <a class="nav-link" href="{{ item.link }}">{{ item.name }}</a>
-      {% endif %}
-    </li>
-    {% endfor %}
-  </ul>
-</nav>
+  </nav>
+</header>

@@ -1,0 +1,114 @@
+{% if page.nav == 'home' %}
+  {% assign employer = site.data.about.sections[0].entries[0] %}
+  {% assign education = site.data.about.sections[1].entries[0] %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": {{ site.name | jsonify }},
+  "url": {{ site.url | jsonify }},
+  "image": {{ site.url | append: '/profile.jpg' | jsonify }},
+  "jobTitle": {{ site.job_title | jsonify }},
+  "worksFor": {
+    "@type": "Organization",
+    "name": {{ employer.title | jsonify }},
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": {{ employer.location | jsonify }},
+      "addressCountry": "IN"
+    }
+  },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": {{ education.title | jsonify }},
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": {{ education.subtitle | jsonify }}
+    }
+  },
+  "sameAs": [{{ site.linkedin | jsonify }}],
+  "description": {{ site.description | jsonify }}
+}
+</script>
+
+{% elsif page.nav == 'about' %}
+  {% assign experience = site.data.about.sections[0] %}
+  {% assign education = site.data.about.sections[1] %}
+  {% assign memberships = site.data.about.sections[2] %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "name": {{ 'About ' | append: site.name | jsonify }},
+  "url": {{ '/about/' | absolute_url | jsonify }},
+  "mainEntity": {
+    "@type": "Person",
+    "name": {{ site.name | jsonify }},
+    "jobTitle": {{ site.job_title | jsonify }},
+    "worksFor": [
+      {% for entry in experience.entries %}
+      {
+        "@type": "Organization",
+        "name": {{ entry.title | jsonify }}{% if entry.location %},
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": {{ entry.location | jsonify }},
+          "addressCountry": "IN"
+        }{% endif %}
+      }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ],
+    "alumniOf": [
+      {% for entry in education.entries %}
+      {
+        "@type": "CollegeOrUniversity",
+        "name": {{ entry.title | jsonify }}{% if entry.subtitle %},
+        "parentOrganization": {
+          "@type": "Organization",
+          "name": {{ entry.subtitle | jsonify }}
+        }{% endif %}
+      }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ],
+    "memberOf": [
+      {% for entry in memberships.entries %}
+      {
+        "@type": "Organization",
+        "name": {{ entry.title | jsonify }}{% if entry.location %},
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": {{ entry.location | jsonify }},
+          "addressCountry": "IN"
+        }{% endif %}
+      }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ]
+  }
+}
+</script>
+
+{% elsif page.nav == 'photos' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ImageGallery",
+  "name": {{ 'Photos by ' | append: site.name | jsonify }},
+  "url": {{ '/photos/' | absolute_url | jsonify }},
+  "author": {
+    "@type": "Person",
+    "name": {{ site.name | jsonify }}
+  },
+  "image": [
+    {% for image in site.data.gallery.images %}
+    {
+      "@type": "ImageObject",
+      "contentUrl": {{ site.url | append: '/photos/full/' | append: image.id | append: '.jpg' | jsonify }},
+      "thumbnailUrl": {{ site.url | append: '/photos/thumbs/' | append: image.id | append: '.jpg' | jsonify }},
+      "name": {{ image.title | jsonify }},
+      "description": {{ image.description | jsonify }}
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}

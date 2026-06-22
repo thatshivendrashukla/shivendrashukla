@@ -1,44 +1,65 @@
 ---
 layout: default
-title: Home
-description: The personal website of Shivendra Shukla - a lawyer with interests in data protection, privacy, and the regulation of emerging technologies.
-active: home
+nav: home
+permalink: /
+title: Shivendra Shukla | Banking and Finance lawyer, Mumbai
+description: The personal website of Shivendra Shukla, a Banking and Finance lawyer at Cyril Amarchand Mangaldas, Mumbai.
+og_type: profile
 ---
+{% assign employer = site.data.about.sections[0].entries[0] %}
 
-<div class="container h-100" id="landingHero">
-  <div class="head-space"></div>
-  <div class="row h-100 justify-content-center align-items-center no-gutters">
-    <div class="col-sm">
-      <img
-        id="profileHero"
-        alt="Shivendra Shukla"
-        src="../assets/images/Shivendra-Shukla.jpg"
-      />
-    </div>
-    <div class="col-sm">
-      <div itemscope itemtype="http://schema.org/Person">
-        <h1
-          class="text-center"
-          style="font-size: 3em"
-          id="name"
-          itemprop="name"
-        >
-          Shivendra Shukla
-        </h1>
-        <div>
-          <p class="lead">
-            I am a <span itemprop="jobTitle">lawyer</span> working with 
-            the Banking and Finance practice group of Cyril Amarchand Mangaldas, Mumbai.
-          </p>
-          <p>
-            I graduated in 2020, with a double bachelor’s degree in Business Administration and Law from the Jindal Global Law School, India.
-          </p>
-          <p>
-            I enjoy reading and writing, dabble in photography, and love the
-            Oxford comma.
-          </p>
+<section
+  id="landingHero"
+  class="site-frame home-hero-wrapper"
+  itemscope
+  itemtype="https://schema.org/Person"
+>
+  <div class="home-hero-inner">
+    <div class="home-hero-photo">
+      <div class="home-hero-photo-frame">
+        <div class="protected-image protected-image--round">
+          <img
+            id="profileHero"
+            src="{{ '/profile.jpg' | relative_url }}"
+            alt="{{ site.name }}"
+            itemprop="image"
+            width="280"
+            height="280"
+            decoding="async"
+            fetchpriority="high"
+          />
+          <div class="protected-image__shield" aria-hidden="true"></div>
         </div>
       </div>
     </div>
+
+    <div class="home-hero-text">
+      <div class="home-hero-text-block">
+        <h1 id="name" class="home-hero-name" itemprop="name">{{ site.name }}</h1>
+
+        <div class="home-bio">
+          <p class="home-bio-lead">
+            I am a <span itemprop="jobTitle">{{ site.job_title }}</span> in the
+            <span itemprop="workLocation" itemscope itemtype="https://schema.org/Place">
+              <span itemprop="name">{{ employer.location }}</span>
+            </span>
+            office of
+            <span itemprop="worksFor" itemscope itemtype="https://schema.org/Organization">
+              <span itemprop="name">{{ employer.title }}</span>
+            </span>,
+            {{ site.home_work_description }}
+          </p>
+
+          <p class="home-bio-body">
+            Outside work, I enjoy reading and writing, (
+            <a href="{{ '/photos/' | relative_url }}" class="inline-link">sometimes</a>
+            ) take photographs, and remain unapologetic about the use of the Oxford comma.
+          </p>
+        </div>
+      </div>
+
+      <link itemprop="url" href="{{ site.url }}" />
+      <link itemprop="sameAs" href="{{ site.linkedin }}" />
+    </div>
   </div>
-</div>
+</section>

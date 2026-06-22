@@ -1,7 +1,47 @@
-title: "Shivendra Shukla" # the name of your site, e.g. ACME Corp.
-markdown: kramdown
-url: "https://shivendrashukla.com" # the base hostname & protocol for your site, e.g. http://example.com
+title: Shivendra Shukla
+url: https://shivendrashukla.com
+baseurl: ""
 
-sass:
-  sass_dir: assets/css
-  style: compressed
+# Profile
+name: Shivendra Shukla
+job_title: Banking and Finance lawyer
+home_work_description: >-
+  where I advise banks, financial institutions, and corporates on financing
+  transactions and debt capital market issuances.
+email_encoded: ff9c90918b9e9c8bbf8c9796899a919b8d9e8c978a94939ed19c9092
+linkedin: https://www.linkedin.com/in/thatshivendrashukla
+
+disclaimer: >-
+  In adherence to the rules of the Bar Council of India, this website does not
+  seek to advertise or solicit work. This is a personal website intended solely
+  to provide general biographical information and share personal interests. All
+  materials contained herein are provided for informational purposes only and
+  shall not be construed as advice, reference, or an endorsement of any kind, on
+  any matter.
+
+# Page copy
+about_intro: >-
+  Below is a summary of my professional background, education, and bar membership.
+photos_intro: >-
+  A selection of photographs from my personal archives. This space is dedicated to
+  sharing a few of my favourites.
+
+# SEO defaults (per-page overrides in front matter)
+description: >-
+  The personal website of Shivendra Shukla, a Banking and Finance lawyer at
+  Cyril Amarchand Mangaldas, Mumbai.
+og_image: /favicons/apple-touch-icon.png
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-redirect-from
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - docs
+  - README.md
+  - .gitignore
+  - bin
+  - .ruby-version

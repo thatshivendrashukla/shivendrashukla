@@ -1,22 +1,25 @@
-<!DOCTYPE html>
-<html lang="{{ site.lang | default: 'en-US' }}">
-  {% include head.html %}
+<!doctype html>
+<html lang="en">
+  <head>
+    {% include head.html %}
+  </head>
   <body>
-    <div class="container h-100" id="bodyContainer">
-      <div class="head-space-nav"></div>
+    <div class="site-grid">
+      {% include json-ld-website.html %}
       {% include navbar.html %}
 
-      <!-- Begin page content -->
-      <main role="main">
-        <div class="container h-100">{{ content }}</div>
+      <main>
+        <div class="page-inner">
+          {{ content }}
+        </div>
       </main>
+
+      {% include footer.html %}
     </div>
-    <!-- Close Body container -->
-    <footer class="footer">
-      <div class="container" id="footerContainer">
-        {% include footer.html %}
-      </div>
-    </footer>
-    {% include javascript.html %}
+
+    <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
+    {% if page.lightbox %}
+    <script src="{{ '/assets/js/lightbox.js' | relative_url }}" defer></script>
+    {% endif %}
   </body>
 </html>

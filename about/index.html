@@ -1,74 +1,68 @@
 ---
 layout: default
-title: About
-description: About Shivendra Shukla
-active: about
+nav: about
+permalink: /about/
+title: About | Shivendra Shukla
+description: Professional background and education.
+og_type: profile
 ---
 
-<h1>Experience</h1>
+<div
+  class="site-frame page-content"
+  itemscope
+  itemtype="https://schema.org/Person"
+>
+  <meta itemprop="name" content="{{ site.name }}" />
 
-<div class="row">
-  <div class="col-sm-1"></div>
-  <div class="col-sm">
-    <div class="experience">
-      <b class="title">Cyril Amarchand Mangaldas</b>
-      <p><b>Mumbai</b></p>
-      <div>
-        <p style="font-size: 0.9rem"><em>February, 2022 - Present</em></p>
-        <p>Banking and Finance.</p>
+  {% assign page_intro = site.about_intro %}
+  {% include page-header.html title="About" intro=page_intro %}
+
+  <div class="about-sections">
+    {% for section in site.data.about.sections %}
+    <section aria-labelledby="about-{{ section.id }}">
+      <h2 id="about-{{ section.id }}" class="about-section-heading">
+        {{ section.title }}
+      </h2>
+
+      <div class="about-entries">
+        {% for entry in section.entries %}
+        <article
+          class="about-entry"
+          itemprop="{{ section.schema_prop }}"
+          itemscope
+          itemtype="https://schema.org/{% if section.schema_prop == 'alumniOf' %}CollegeOrUniversity{% else %}Organization{% endif %}"
+        >
+          <h3 class="about-entry-title">
+            <span itemprop="name">{{ entry.title }}</span>{% if entry.subtitle %}, {{ entry.subtitle }}{% endif %}{% if entry.location %}<span class="about-entry-location">, {{ entry.location }}</span>{% endif %}
+          </h3>
+
+          {% if entry.description %}
+          <p class="about-entry-description">{{ entry.description }}</p>
+          {% endif %}
+
+          {% if entry.roles.size > 0 %}
+          <ul class="about-roles{% if section.schema_prop == 'worksFor' %} about-roles--indented{% endif %}">
+            {% for role in entry.roles %}
+            <li class="about-role">
+              {% if role.title %}
+              <p class="about-role-title">{{ role.title }}</p>
+              {% endif %}
+              <p class="about-role-period">{{ role.period }}</p>
+              {% if role.description %}
+              <p class="about-role-description">{{ role.description }}</p>
+              {% endif %}
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </article>
+        {% endfor %}
       </div>
-    </div>
+
+      {% unless forloop.last %}
+      <hr class="about-section-divider" />
+      {% endunless %}
+    </section>
+    {% endfor %}
   </div>
-  <div class="col-sm"></div>
-</div>
-
-<div class="row">
-  <div class="col-sm-1"></div>
-  <div class="col-sm">
-    <div class="experience">
-      <b class="title">SNG & Partners</b>
-      <p><b>Mumbai</b></p>
-      <div>
-        <p style="font-size: 0.9rem"><em>September 2020 - February, 2022</em></p>
-        <p>Banking and Finance.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm"></div>
-</div>
-
-<hr />
-
-<h1>Education</h1>
-
-<div class="row">
-  <div class="col-sm-1"></div>
-  <div class="col-sm">
-    <div class="experience">
-      <b class="title">Jindal Global Law School</b>
-      <p><b>O.P. Jindal Global University, India</b></p>
-      <div>
-        <p style="font-size: 0.9rem"><em>August 2015 - May 2020</em></p>
-        <p>
-          Bachelor of Business Administration and Bachelor of Laws (B.B.A, LL.B. (Hons.)) degree.
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-1"></div>
-</div>
-
-<hr />
-
-<h1>Memberships</h1>
-
-<div class="row">
-  <div class="col-sm-1"></div>
-  <div class="col-sm">
-    <div class="experience">
-      <b class="title">Bar Council of Maharashtra and Goa</b>
-      <p><b>India</b></p>
-    </div>
-  </div>
-  <div class="col-sm-1"></div>
 </div>

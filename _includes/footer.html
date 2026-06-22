@@ -1,23 +1,28 @@
-<hr />
+<footer class="site-footer">
+  <div class="site-frame">
+    <div class="footer-top">
+      <div class="footer-links">
+        <a
+          href="#"
+          class="footer-link"
+          data-email-encoded="{{ site.email_encoded }}"
+        >
+          Email
+        </a>
+        <a
+          href="{{ site.linkedin }}"
+          class="footer-link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+        </a>
+      </div>
+      <span class="footer-copy">&copy; {{ 'now' | date: '%Y' }} {{ site.name }}</span>
+    </div>
 
-<ul>
-  <li style="margin-right: 20px">
-    <a href="mailto:contact@shivendrashukla.com">Email</a>
-  </li>
-  <li>
-    <a href="https://www.linkedin.com/in/thatshivendrashukla">LinkedIn</a>
-  </li>
-  <li style="float: right">
-    <span class="copyright">&copy; 2026 Shivendra Shukla</span>
-  </li>
-</ul>
-
-<p class="text-muted" style="font-size: 0.7rem">
-  <span style="font-weight: 900">Notice: </span>In adherence to Bar Council
-  of India rules, this website does not seek to solicit work nor advertise.
-  This website, and all content and information (<q>materials</q>) contained
-  within, is a consolidated resource of publicly available information,
-  ordinarily available on the internet. Any and all materials contained within this website are provided for
-  informational purposes only, may be outdated or otherwise incorrect, and shall
-  not be construed as an endorsement, legal reference or advice on any matter.
-</p>
+    <p class="footer-notice">
+      <strong>Notice: </strong>{{ site.disclaimer }}
+    </p>
+  </div>
+</footer>

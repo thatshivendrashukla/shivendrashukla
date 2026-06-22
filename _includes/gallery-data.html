@@ -1,0 +1,13 @@
+<script type="application/json" id="gallery-data">
+[
+  {% for image in site.data.gallery.images %}
+  {
+    "thumbSrc": {{ '/photos/thumbs/' | append: image.id | append: '.jpg' | relative_url | jsonify }},
+    "fullSrc": {{ '/photos/full/' | append: image.id | append: '.jpg' | relative_url | jsonify }},
+    "alt": {{ image.alt | jsonify }},
+    "title": {{ image.title | jsonify }},
+    "description": {{ image.description | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]
+</script>

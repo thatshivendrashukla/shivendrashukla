@@ -1,0 +1,56 @@
+sections:
+  - id: experience
+    title: Experience
+    schema_prop: worksFor
+    entries:
+      - id: cam
+        title: Cyril Amarchand Mangaldas
+        location: Mumbai
+        description: >-
+          Banking and Finance, with work spanning advisory matters, financing
+          transactions, syndicated lending, structured finance, and privately
+          placed debt capital market issuances.
+        roles:
+          - id: cam-principal
+            title: Principal Associate
+            period: April 2026 – Present
+          - id: cam-senior
+            title: Senior Associate
+            period: April 2024 – April 2026
+          - id: cam-associate
+            title: Associate
+            period: February 2022 – April 2024
+      - id: sng
+        title: SNG & Partners
+        location: Mumbai
+        description: >-
+          Banking and Finance, with work encompassing both lender and
+          borrower-side financing transactions.
+        roles:
+          - id: sng-banking
+            title: Associate
+            period: September 2020 – February 2022
+
+  - id: education
+    title: Education
+    schema_prop: alumniOf
+    entries:
+      - id: jgls
+        title: Jindal Global Law School
+        subtitle: O.P. Jindal Global University
+        location: India
+        roles:
+          - id: jgls-degree
+            period: August 2015 – May 2020
+            description: >-
+              Bachelor of Business Administration and Bachelor of Laws (B.B.A,
+              LL.B. (Hons.)) degree.
+
+  - id: memberships
+    title: Memberships
+    schema_prop: memberOf
+    entries:
+      - id: bcmg
+        title: Bar Council of Maharashtra and Goa
+        location: India
+        roles: []

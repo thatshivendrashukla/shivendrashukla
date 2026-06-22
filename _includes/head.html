@@ -1,32 +1,64 @@
-<head>
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, shrink-to-fit=no"
-  />
-  <meta charset="utf-8" />
+{% assign page_title = page.title | default: site.title %}
+{% assign page_description = page.description | default: site.description %}
+{% assign canonical = page.url | absolute_url %}
+{% assign og_image = site.url | append: site.og_image %}
+{% assign og_type = page.og_type | default: 'website' %}
 
-  <meta name="description" content="{{ page.description }}" />
-  <meta name="author" content="Shivendra Shukla" />
-  <meta property="og:site_name" content="Shivendra Shukla" />
-  <meta property="og:type" content="website" />
-  <meta property="article:tag" content="Shivendra Shukla" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="{{ page.title }} | Shivendra Shukla" />
-  <meta name="twitter:label1" content="Written by" />
-  <meta name="twitter:data1" content="Shivendra Shukla" />
-  <meta name="twitter:label2" content="Filed under" />
-  <meta name="twitter:data2" content="Shivendra Shukla" />
-  
-  <title>{{ page.title }} | {{ site.title }}</title>
-
-  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
-  <!-- Import Fonts -->
+<meta charset="utf-8" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+<noscript>
   <link
     rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;1,400&family=Roboto:wght@400;500;700;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
   />
-  <!-- Favicons -->
-  {% include favicons.html %}
-  <!-- Analytics -->
-  {% include analytics.html %}
-</head>
+</noscript>
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
+
+{% if page.nav == 'home' %}
+<link
+  rel="preload"
+  as="image"
+  href="{{ '/profile.jpg' | relative_url }}"
+  fetchpriority="high"
+/>
+{% endif %}
+
+<link rel="apple-touch-icon" sizes="180x180" href="{{ '/favicons/apple-touch-icon.png' | relative_url }}" />
+<link rel="icon" type="image/png" sizes="32x32" href="{{ '/favicons/favicon-32x32.png' | relative_url }}" />
+<link rel="icon" type="image/png" sizes="16x16" href="{{ '/favicons/favicon-16x16.png' | relative_url }}" />
+<link rel="manifest" href="{{ '/favicons/site.webmanifest' | relative_url }}" />
+<link rel="mask-icon" href="{{ '/favicons/safari-pinned-tab.svg' | relative_url }}" color="#0099ff" />
+<link rel="shortcut icon" href="{{ '/favicons/favicon.ico' | relative_url }}" />
+<meta name="msapplication-TileColor" content="#ff0000" />
+<meta name="msapplication-config" content="{{ '/favicons/browserconfig.xml' | relative_url }}" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="light" />
+<meta name="theme-color" content="#fafafa" />
+
+<title>{{ page_title | escape }}</title>
+<meta name="description" content="{{ page_description | escape }}" />
+<link rel="canonical" href="{{ canonical | escape }}" />
+
+<meta property="og:title" content="{{ page_title | escape }}" />
+<meta property="og:description" content="{{ page_description | escape }}" />
+<meta property="og:url" content="{{ canonical | escape }}" />
+<meta property="og:image" content="{{ og_image | escape }}" />
+<meta property="og:type" content="{{ og_type | escape }}" />
+<meta property="og:site_name" content="{{ site.name | escape }}" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{{ page_title | escape }}" />
+<meta name="twitter:description" content="{{ page_description | escape }}" />
+<meta name="twitter:image" content="{{ og_image | escape }}" />
+
+<meta name="robots" content="{% if page.noindex %}noindex, follow{% else %}index, follow{% endif %}" />
+
+{% include json-ld-page.html %}

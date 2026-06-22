@@ -1,0 +1,40 @@
+<div
+  id="photo-lightbox"
+  class="lightbox"
+  hidden
+  role="dialog"
+  aria-modal="true"
+  aria-label="Photo viewer"
+>
+  <button type="button" class="lightbox__close" aria-label="Close gallery">Close</button>
+
+  <div class="lightbox__stage">
+    <button type="button" class="lightbox__nav lightbox__nav--prev" aria-label="Previous photo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M15 18l-6-6 6-6" />
+      </svg>
+    </button>
+
+    <div class="lightbox__main">
+      <div class="protected-image lightbox__image-wrap">
+        <img src="" alt="" />
+        <div class="protected-image__shield" aria-hidden="true"></div>
+      </div>
+
+      <div class="lightbox__caption">
+        <h2 class="lightbox__title"></h2>
+        <p class="lightbox__description"></p>
+      </div>
+    </div>
+
+    <button type="button" class="lightbox__nav lightbox__nav--next" aria-label="Next photo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M9 18l6-6-6-6" />
+      </svg>
+    </button>
+  </div>
+
+  <div class="lightbox__filmstrip-wrap">
+    <div class="site-frame lightbox__filmstrip"></div>
+  </div>
+</div>

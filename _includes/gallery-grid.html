@@ -1,0 +1,21 @@
+<div class="photo-grid">
+  {% for image in site.data.gallery.images %}
+  <div
+    class="protected-image photo-thumb"
+    data-lightbox-index="{{ forloop.index0 }}"
+    role="button"
+    tabindex="0"
+    aria-label="Open {{ image.title | escape }}"
+  >
+    <img
+      src="{{ '/photos/thumbs/' | append: image.id | append: '.jpg' | relative_url }}"
+      alt="{{ image.alt | escape }}"
+      width="400"
+      height="300"
+      decoding="async"
+      {% if forloop.index <= 8 %}loading="eager"{% else %}loading="lazy"{% endif %}
+    />
+    <div class="protected-image__shield"></div>
+  </div>
+  {% endfor %}
+</div>

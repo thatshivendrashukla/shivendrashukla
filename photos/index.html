@@ -1,0 +1,21 @@
+---
+layout: default
+nav: photos
+permalink: /photos/
+redirect_from:
+  - /photography
+  - /photography/
+title: Photos | Shivendra Shukla
+description: Photographs by Shivendra Shukla.
+og_type: website
+lightbox: true
+---
+
+<div class="site-frame page-content">
+  {% assign page_intro = site.photos_intro %}
+  {% include page-header.html title="Photos" intro=page_intro %}
+  {% include gallery-grid.html %}
+</div>
+
+{% include gallery-data.html %}
+{% include lightbox.html %}
