@@ -586,6 +586,11 @@ main > .page-inner {
   object-fit: cover;
 }
 
+html.lightbox-open {
+  overflow: hidden;
+  scrollbar-gutter: auto;
+}
+
 /* Lightbox */
 .lightbox {
   position: fixed;
@@ -728,46 +733,61 @@ main > .page-inner {
   max-width: 72rem;
   height: 100%;
   min-height: 0;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-inline: auto;
 }
 
 .lightbox__artwork {
-  display: grid;
-  width: 100%;
-  height: 100%;
-  min-height: 0;
-  grid-template-rows: minmax(0, 1fr) auto;
-  justify-items: center;
-  align-content: center;
-}
-
-.lightbox__image-wrap {
   display: flex;
   width: 100%;
-  max-width: 64rem;
+  height: 100%;
   min-height: 0;
   align-items: center;
   justify-content: center;
 }
 
-.lightbox__image-wrap img {
-  display: block;
+.lightbox__frame {
+  display: flex;
+  width: 100%;
+  max-width: 64rem;
+  height: 100%;
   max-height: 100%;
+  min-height: 0;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.lightbox__image-wrap {
+  display: flex;
+  width: 100%;
+  align-self: stretch;
+  min-height: 0;
+  flex: 1 1 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox__image-wrap.protected-image {
+  overflow: visible;
+}
+
+.lightbox__image-wrap img,
+.lightbox__image-wrap.protected-image img {
+  display: block;
   width: auto;
+  height: auto;
   max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
 }
 
 .lightbox__placard {
-  position: relative;
   width: fit-content;
-  max-width: min(18rem, 100%);
-  margin-top: 0.75rem;
-  margin-inline: auto;
-  justify-self: center;
+  max-width: min(20rem, 100%);
+  align-self: center;
+  flex-shrink: 0;
+  margin-top: 1rem;
   border: 1px solid color-mix(in oklab, var(--color-border) 70%, #c8b89a);
   background-color: #fffef8;
   padding: 0.75rem 1rem 0.875rem;
@@ -775,19 +795,6 @@ main > .page-inner {
   box-shadow:
     0 1px 2px rgba(0, 0, 0, 0.04),
     0 4px 12px rgba(0, 0, 0, 0.07);
-}
-
-.lightbox__placard::before {
-  content: "";
-  position: absolute;
-  top: -0.3rem;
-  left: 50%;
-  width: 2.25rem;
-  height: 0.6rem;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  background-color: rgba(255, 255, 255, 0.65);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-  transform: translateX(-50%);
 }
 
 .lightbox__title {
@@ -821,6 +828,56 @@ main > .page-inner {
   }
 }
 
+@media (max-width: 39.999rem) {
+  .lightbox__stage {
+    align-items: stretch;
+    padding: 2.5rem 0.5rem 0.5rem;
+  }
+
+  .lightbox__close {
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+
+  .lightbox__nav {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .lightbox__nav--prev {
+    left: 0.125rem;
+  }
+
+  .lightbox__nav--next {
+    right: 0.125rem;
+  }
+
+  .lightbox__main {
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+
+  .lightbox__artwork {
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+
+  .lightbox__frame {
+    max-width: none;
+    flex: 1;
+  }
+
+  .lightbox__placard {
+    margin-top: 0.625rem;
+    max-width: 100%;
+    padding: 0.625rem 0.75rem 0.75rem;
+  }
+
+  .lightbox__filmstrip-wrap {
+    padding: 0.5rem 0.5rem max(0.5rem, env(safe-area-inset-bottom));
+  }
+}
+
 .lightbox__filmstrip-wrap {
   flex-shrink: 0;
   border-top: 1px solid var(--color-border);
@@ -836,6 +893,7 @@ main > .page-inner {
 .lightbox__filmstrip {
   display: flex;
   gap: 0.5rem;
+  justify-content: safe center;
   overflow-x: auto;
   padding-bottom: 0.25rem;
 }

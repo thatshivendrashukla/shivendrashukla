@@ -135,12 +135,14 @@
     buildFilmstripOnce()
     setActiveIndex(index)
     lightbox.hidden = false
+    document.documentElement.classList.add('lightbox-open')
     document.body.style.overflow = 'hidden'
     lightbox.focus({ preventScroll: true })
   }
 
   function close() {
     lightbox.hidden = true
+    document.documentElement.classList.remove('lightbox-open')
     document.body.style.overflow = ''
   }
 
