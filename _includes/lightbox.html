@@ -2,6 +2,7 @@
   id="photo-lightbox"
   class="lightbox"
   hidden
+  tabindex="-1"
   role="dialog"
   aria-modal="true"
   aria-label="Photo viewer"
@@ -16,14 +17,16 @@
     </button>
 
     <div class="lightbox__main">
-      <div class="protected-image lightbox__image-wrap">
-        <img src="" alt="" />
-        <div class="protected-image__shield" aria-hidden="true"></div>
-      </div>
+      <div class="lightbox__artwork">
+        <div class="protected-image lightbox__image-wrap">
+          <img src="" alt="" />
+          <div class="protected-image__shield" aria-hidden="true"></div>
+        </div>
 
-      <div class="lightbox__caption">
-        <h2 class="lightbox__title"></h2>
-        <p class="lightbox__description"></p>
+        <div class="lightbox__placard">
+          <h2 class="lightbox__title"></h2>
+          <p class="lightbox__description"></p>
+        </div>
       </div>
     </div>
 

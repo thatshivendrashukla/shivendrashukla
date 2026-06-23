@@ -20,6 +20,7 @@
   const titleEl = lightbox.querySelector('.lightbox__title')
   const descriptionEl = lightbox.querySelector('.lightbox__description')
   const filmstrip = lightbox.querySelector('.lightbox__filmstrip')
+  const siteHeader = document.querySelector('.site-header')
   let activeIndex = 0
   let filmstripBuilt = false
   const preloaded = new Set()
@@ -121,12 +122,21 @@
     preloadAdjacent()
   }
 
+  function syncLightboxOffset() {
+    if (!siteHeader) return
+    document.documentElement.style.setProperty(
+      '--site-header-height',
+      `${siteHeader.offsetHeight}px`,
+    )
+  }
+
   function open(index) {
+    syncLightboxOffset()
     buildFilmstripOnce()
     setActiveIndex(index)
     lightbox.hidden = false
     document.body.style.overflow = 'hidden'
-    closeBtn?.focus()
+    lightbox.focus({ preventScroll: true })
   }
 
   function close() {
@@ -163,5 +173,9 @@
     event.preventDefault()
     const index = Number.parseInt(trigger.getAttribute('data-lightbox-index'), 10)
     if (!Number.isNaN(index)) open(index)
+  })
+
+  window.addEventListener('resize', () => {
+    if (!lightbox.hidden) syncLightboxOffset()
   })
 })()

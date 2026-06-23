@@ -6,10 +6,13 @@ _site/
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
+
+# Ruby / Bundler
 vendor/
+.bundle/
 Gemfile.lock
 
-# Private notes (not for the public repo)
+# Local documentation & notes
 docs/
 
 # Editor
