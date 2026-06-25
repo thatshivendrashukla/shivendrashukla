@@ -33,7 +33,6 @@ description: >-
 og_image: /favicons/apple-touch-icon.png
 
 plugins:
-  - jekyll-sitemap
   - jekyll-redirect-from
 
 exclude:
