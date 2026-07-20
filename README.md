@@ -1,4 +1,4 @@
-If you're reading this readme, you're somewhere most visitors don't end up, this repo holds the source for my personal site, not the site itself.
+If you're looking at this readme, you're you're looking at the GitHub repo that holds the source for my personal site, not the site itself.
 
 [**shivendrashukla.com**](https://shivendrashukla.com) is probably what you were looking for.
 
