@@ -32,6 +32,9 @@ description: >-
   Cyril Amarchand Mangaldas, Mumbai.
 og_image: /favicons/apple-touch-icon.png
 
+# Analytics (loaded only when JEKYLL_ENV=production, e.g. GitHub Pages)
+google_analytics: G-DVS0NT77KV
+
 plugins:
   - jekyll-redirect-from
 
